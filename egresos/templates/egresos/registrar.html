@@ -1,0 +1,27 @@
+{% extends "egresos/base.html" %}
+
+{% block content %}
+<div class="container">
+
+  <br>
+  <h3>Registra Gasto Diario</h3>
+  <br>
+  <div class="">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+    <br>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-6 col-sm-4"><input type="submit" value="Registrar" /></div>
+      <div class="col-6 col-sm-4"><button class="btn-light"><a href="{% url 'listagastos' %}">Ver Lista registros</a></button></div>
+    </div>
+  </div>
+   
+  </form>
+  <br>
+{% include 'egresos/gasto10ultimos.html' %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load humanize %}
+<body>
+    <table class="table">
+        <tbody>
+          <tr>
+            <th>Fecha</th>
+            <th>Empresa</th>
+            <td>Nombre</td>
+            <td>Concepto</td>
+            <td>Categoria</td>
+            <td>Medio Pago</td>
+            <td>Valor</td>
+          </tr>
+      
+          {% for gasto in object_list %}
+          <tr>
+            <td>{{ gasto.fecha }}</td>
+            <td>{{ gasto.get_empresa_display }}</td>
+            <td>{{ gasto.nombre }}</td>
+            <td>{{ gasto.concepto }}</td>
+            <td>{{ gasto.get_categoria_display }}</td>
+            <td>{{ gasto.get_medio_pago_display }}</td>
+            <td>{{ gasto.valor|intcomma }}</td>
+            
+          {% endfor %}
+        </tbody>
+      </table>
+</body>
+</html>

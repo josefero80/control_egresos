@@ -1,0 +1,46 @@
+{% extends "egresos/base.html" %}
+{% load humanize %}
+
+{% block title %}Lista Gastos{% endblock title %}
+
+{% block content %}
+<br>
+<div class="container">
+  <h1>Lista Gastos</h1>
+<br>
+  <div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        DataTable Gastos
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Empresa</th>
+        <th>Nombre</th>
+        <th>Concepto</th>
+        <th>Categoria</th>
+        <th>Medio Pago</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for gasto in object_list %}
+      <tr>
+        <td>{{ gasto.fecha }}</td>
+        <td>{{ gasto.get_empresa_display }}</td>
+        <td>{{ gasto.nombre }}</td>
+        <td>{{ gasto.concepto }}</td>
+        <td>{{ gasto.get_categoria_display }}</td>
+        <td>{{ gasto.get_medio_pago_display }}</td>
+        <td>{{ gasto.valor|intcomma }}</td>
+      </tr> 
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
+
+{% endblock content %}
